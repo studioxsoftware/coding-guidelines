@@ -8,7 +8,6 @@ The StudioX coding conventions and best practices are compiled not only from Stu
 
 You can find the coding guidelines for a specific technology in the list as below:
 
-* [Java](java.md)
 * [.NET with C#](dotnet.md)
 * [JavaScript](javascript.md)
 * [TypeScript](typescript.md)
