@@ -12,7 +12,7 @@ You can find the coding guidelines for a specific technology in the list as belo
 * [JavaScript](javascript.md)
 * [TypeScript](typescript.md)
 * [Front-end](front-end.md)
-* [ETL](etl/README.md)
+* [ETL](etl.md)
 * [SQL Server](sql-server.md)
 
 As supporting for software development process, StudioX provide the standards for:
