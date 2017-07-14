@@ -21,7 +21,7 @@
     - [2.8.2 Names of Property](#282-names-of-property)
     - [2.8.3 Names of Events](#283-names-of-events)
     - [2.8.4 Names of Fields](#284-names-of-fields)
-- [2.9 Naming Resources](#29-naming-resources)
+    - [2.9 Naming Resources](#29-naming-resources)
 - [3. Layout and Indentation](#3-layout-and-indentation)
 - [4. Methods](#4-methods)
 - [5. Exceptions](#5-exceptions)
