@@ -200,6 +200,7 @@
   {
     // DO
     public string Address { ... }
+    
     // DO NOT
     public string CustomerAddress {...}
   }
@@ -215,6 +216,7 @@
 ```csharp
   // DO 
   long ConvertToInt64(object value)
+  
   // DO NOT
   long ConvertToLong(object value)
 ```
@@ -223,6 +225,7 @@
 ```csharp
   // DO 
   long ConvertToInt64(object value)
+  
   // DO NOT
   long ConvertToInt64(object valueObject)
 ```
