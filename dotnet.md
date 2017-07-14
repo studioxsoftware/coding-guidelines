@@ -42,3 +42,120 @@
 
 - Develop reliable and maintainable application code.
 - The naming conventions, coding standards and best practices described in this document are compiled from StudioX developers own experiences and by referring to Microsoft guidelines.
+
+
+## 2. Naming
+### 2.1 Casing Style
+
+- Pascal Casing: The first letter in the identifier and the first letter of each subsequent concatenated word are capitalized. You can use Pascal case for identifiers of three or more characters. For example: BackColor, FrontColor.
+- Camel Casing: The first letter of an identifier is lowercase and the first letter of each subsequent concatenated word is capitalized. For example: backColor, foreColor
+- Uppercase: All letters in the identifier are capitalized. For example: IO, DB.
+
+### 2.2 Capitalization Rules for Identifiers
+
+- **DO** use Pascal casing for all public member, type, and namespace names consisting of multiple words.
+- **DO** use Camel casing for parameter names.
+
+<table>
+<tr>
+  <th>Identifier</th><th>Casing</th><th>Example</th>
+</tr>
+<tr>
+  <td>Namespace</td>
+  <td>Pascal</td>
+  <td>namespace StudioX.CodingStandard {....}</td>
+</tr>
+<tr>
+  <td>Type</td>
+  <td>Pascal</td>
+  <td>public class BinaryStreamWriter {....}</td>
+</tr>
+<tr>
+  <td>Interface</td>
+  <td>Pascal</td>
+  <td>public interface IStreamWriter {....}</td>
+</tr>
+<tr>
+  <td>Method</td>
+  <td>Pascal</td>
+  <td>
+    <pre>public class BinaryStreamWriter 
+{
+    public void Write(byte[] data)  {....}
+}</pre>
+  </td>
+</tr>
+<tr>
+  <td>Property</td>
+  <td>Pascal</td>
+  <td>
+    <pre>public class Stream 
+{
+    public long Length  { get; }
+}</pre>
+  </td>
+</tr>
+<tr>
+  <td>Event</td>
+  <td>Pascal</td>
+  <td>
+    <pre>public class Process 
+{
+    public EventHandler Existed;
+}</pre>
+  </td>
+</tr>
+<tr>
+  <td>Public Field</td>
+  <td>Pascal</td>
+  <td>
+    <pre>public class MessageQueue
+{
+    public static readonly TimeSpan Timeout;
+}</pre>
+  </td>
+</tr>
+<tr>
+  <td>Private Field</td>
+  <td>Camel</td>
+  <td>
+    <pre>public class MessageQueue
+{
+    public Queue&lt;Message&gt; internalQueue;
+}</pre>
+  </td>
+</tr>
+<tr>
+  <td>Constant</td>
+  <td>Pascal</td>
+  <td>
+    <pre>public class MessageQueue
+{
+    public const int MaxQueueLength = 500;
+}</pre>
+  </td>
+</tr>
+<tr>
+  <td>Enum</td>
+  <td>Pascal</td>
+  <td>
+    <pre>public enum FileMode
+{
+    CreateNew,
+    Append,
+    ...
+}</pre>
+  </td>
+</tr>
+<tr>
+  <td>Parameter</td>
+  <td>Camel</td>
+  <td>
+    <pre>public class Converter
+{
+    public int ToInt32(string value) {...}
+}</pre>
+  </td>
+</tr>
+</table>
+
