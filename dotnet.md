@@ -159,3 +159,70 @@
 </tr>
 </table>
 
+### 2.3 Capitalizing Compound Words and Common Terms
+
+- **DO NOT** capitalizes each word in so-called closed-form compound words. For example: use endpoint, Endpoint, not EndPoint, nor endPoint.
+
+| Pascal | Camel | Not |
+| --- | --- | --- |
+| BitFlag | bitFlag | Bitflag |
+| Callback | callback | CallBack |
+| Email | email | EMail |
+| FileName | fileName | Filename |
+| Hashtable | hashtable | HashTable |
+
+### 2.4 General Naming Conventions
+
+- **DO** use self-explanatory names for everything (interfaces, classes, methods, variables etc.)
+- **DO NOT** sacrifice length for clarity. Long but communicative names are much better than short but convoluted names.
+
+#### 2.4.1 Word Choice
+
+- **DO** choose easily readable identifier names. For example, a property named HorizontalAlignment is more English-readable than AlignmentHorizontal.
+- **DO** favor readability over brevity. The property name CanScrollHorizontally is better than ScrollableX (an obscure reference to the X-axis).
+- **DO NOT** use underscores, hyphens, or any other non-alphanumeric characters.
+- **DO NOT** use Hungarian notation, e.g. bConfirm, iCount.
+- **CONSIDER** prefix Boolean variables and properties with &quot;can&quot;, &quot;is&quot; or &quot;has&quot;. Example:
+```csharp
+  public class Command
+  {
+    private bool canExecute = false;
+    
+    public bool CanExecute { get; }
+    
+    public bool HasExecute { get; }
+  }
+```
+
+- Do not include the parent class name within a property name. Example:
+```csharp
+  public class Customer
+  {
+    // DO
+    public string Address { ... }
+    // DO NOT
+    public string CustomerAddress {...}
+  }
+```
+
+- **AVOID** using identifiers that conflict with keywords of widely used programming languages. Uses the **@** sign as an escape mechanism in this case, for example @class, @dynamic. However, it is still a good idea to avoid common keywords because it is much more difficult to use a method with the escape sequence than one without it.
+
+#### 2.4.2 Using Abbreviations and Acronyms
+
+- **DO NOT** use abbreviations or contractions as part of identifier names. For example, use GetWindow rather than GetWin.
+- **DO NOT** uses any acronyms that are not widely accepted, and even if they are, only when necessary.
+- **DO** use a generic CLR type name, rather than a language-specific name, in the rare cases when an identifier has no semantic meaning beyond its type.
+```csharp
+  // DO 
+  long ConvertToInt64(object value)
+  // DO NOT
+  long ConvertToLong(object value)
+```
+
+- **DO** use a common name, such as value or item, rather than repeating the type name, in the rare cases when an identifier has no semantic meaning and the type of the parameter is not important.
+```csharp
+  // DO 
+  long ConvertToInt64(object value)
+  // DO NOT
+  long ConvertToInt64(object valueObject)
+```
