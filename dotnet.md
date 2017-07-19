@@ -250,3 +250,56 @@
 
 - **DO NOT** introduce generic type names such as Element, Node, Log, and Message. You should qualify the generic type names (FormElement, XmlNode, EventLog, SoapMessage).
 - **DO NOT** give the same name to types in namespaces within a single application model.
+
+### 2.7 Names of Classes, Structs, and Interfaces
+
+- **DO** name classes and structs with nouns or noun phrases, using Pascal casing.
+- **DO** prefix interface names with the letter I, to indicate that the type is an interface.
+- **DO** name interfaces with adjective phrases, or occasionally with nouns or noun phrases.
+```csharp
+  public interface IExecutable {...}
+  public class Command : IExecutable {...}
+```
+
+- **DO NOT** give class names a prefix (e.g., &quot;C&quot;).
+- **CONSIDER** ending the name of derived classes with the name of the base class. Example:
+```csharp
+  public abstract class Repositoty {...}
+  public sealed class EmployeeRepository : Repositoty {...}
+```
+
+#### 2.7.1 Names of Generic Type Parameters
+
+- **CONSIDER** using T as the type parameter name for types with one single-letter type parameter.
+```csharp
+  public int IComparer<T> {...}
+  public delegate bool Predicate<T>(T item);
+  public struct Nullable<T> where T:struct {...}
+```
+
+- **DO** prefix descriptive type parameter names with T.
+```csharp
+  public interface ISessionChannel<TSession> 
+    where TSession : ISession {...}
+```
+
+#### 2.7.2 Naming Enumerations
+
+- **DO** use a singular type name for an enumeration unless its values are bit fields.
+```csharp
+  public enum UserRole
+  {
+    Guest,
+    Subsriber,
+    Administrator
+  }
+  [Flags]
+  public enum Permissions
+  {
+    Read = 0,
+    Write =1
+  }
+```
+
+- **DO NOT** use a prefix on enumeration value names (e.g., &quot;ad&quot; for ADO enums, &quot;rtf&quot; for rich text enums, etc.).
+
