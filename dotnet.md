@@ -229,3 +229,8 @@
   // DO NOT
   long ConvertToInt64(object valueObject)
 ```
+
+### 2.5 Names of Assemblies and DLLs
+
+- **DO** choose names for your assembly DLLs that suggest large chunks of functionality, such as System.Data, System.IO.
+- **CONSIDER** name DLLs according to the following pattern: &lt;Company&gt;.&lt;Component&gt;.dll where &lt;Component&gt; contains one or more dot-separated clauses. For example: Web.Controls.dll
