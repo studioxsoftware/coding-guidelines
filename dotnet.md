@@ -239,7 +239,7 @@
 
 #### 2.6.1 General rules
 
-- **DO** follow the template : &lt;Company&gt;.(&lt;Product&gt;|&lt;Technology&gt;)[.&lt;Feature&gt;][.&lt;Subnamespace&gt;]. For example: Security.Authentications.
+- **DO** follow the template : &lt;Company&gt;.(&lt;Product&gt;|&lt;Technology&gt;)[.&lt;Feature&gt;][.&lt;Subnamespace&gt;]. For example: StudioX.Security.Authentications.
 - **DO** prefix namespace names with a company name to prevent namespaces from different companies from having the same name.
 - **DO NOT** use organizational hierarchies as the basis for names in namespace hierarchies, because group names within corporations tend to be short-lived. Organize the hierarchy of namespaces around groups of related technologies.
 - **DO** use Pascal casing, and separate namespace components with periods (e.g., QualityAssurance.qTest). If your brand employs nontraditional casing, you should follow the casing defined by your brand, even if it deviates from normal namespace casing (e.g. use qTrace instead of QTrace or Qtrace).
