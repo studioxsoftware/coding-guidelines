@@ -234,3 +234,19 @@
 
 - **DO** choose names for your assembly DLLs that suggest large chunks of functionality, such as System.Data, System.IO.
 - **CONSIDER** name DLLs according to the following pattern: &lt;Company&gt;.&lt;Component&gt;.dll where &lt;Component&gt; contains one or more dot-separated clauses. For example: Web.Controls.dll
+
+### 2.6 Names of Namespaces
+
+#### 2.6.1 General rules
+
+- **DO** follow the template : &lt;Company&gt;.(&lt;Product&gt;|&lt;Technology&gt;)[.&lt;Feature&gt;][.&lt;Subnamespace&gt;]. For example: Security.Authentications.
+- **DO** prefix namespace names with a company name to prevent namespaces from different companies from having the same name.
+- **DO NOT** use organizational hierarchies as the basis for names in namespace hierarchies, because group names within corporations tend to be short-lived. Organize the hierarchy of namespaces around groups of related technologies.
+- **DO** use Pascal casing, and separate namespace components with periods (e.g., QualityAssurance.qTest). If your brand employs nontraditional casing, you should follow the casing defined by your brand, even if it deviates from normal namespace casing (e.g. use qTrace instead of QTrace or Qtrace).
+- **CONSIDER** using plural namespace names where appropriate. For example, use Collections instead of Collection. Brand names and acronyms are exceptions to this rule, however. For example, use IO instead of IOs.
+- **DO NOT** use the same name for a namespace and a type in that namespace.
+
+#### 2.6.2 Namespaces and Type Name Conflicts
+
+- **DO NOT** introduce generic type names such as Element, Node, Log, and Message. You should qualify the generic type names (FormElement, XmlNode, EventLog, SoapMessage).
+- **DO NOT** give the same name to types in namespaces within a single application model.
