@@ -352,3 +352,9 @@
 
 - **DO** name fields using a noun, noun phrase, or adjective.
 
+
+### 2.9 Naming Resources
+
+- **DO** use Pascal casing in resource keys.
+- **DO** use only alphanumeric characters and underscores in naming resources.
+- **DO** use the following naming convention for exception message resources: &lt;ExceptionType&gt;&lt;SpecificError&gt;. For example: ArgumentExceptionIllegalCharacters, ArgumentExceptionInvalidName.
