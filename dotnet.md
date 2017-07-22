@@ -358,3 +358,32 @@
 - **DO** use Pascal casing in resource keys.
 - **DO** use only alphanumeric characters and underscores in naming resources.
 - **DO** use the following naming convention for exception message resources: &lt;ExceptionType&gt;&lt;SpecificError&gt;. For example: ArgumentExceptionIllegalCharacters, ArgumentExceptionInvalidName.
+
+## 3. Layout and Indentation
+
+- **DO** use 4 whitespaces for each nested level of code.
+- **DO NOT** nest code any more than 3 levels of depth.
+- **DO** use one blank line to separate blocks of code.
+- **CONSIDER** break single long line of code to multiple lines of code with level indentations.
+```csharp
+  using <ReferenceNamespacesAndAlias>
+  namespace <Namespace>
+  {
+    public class <ClassName>
+    {
+      public void Method()
+      {
+        // Method content
+      }
+      
+      public void MethodWithManyParameters(
+          string <parameter1>,
+          string <parameter2>,
+          long <parameter3>,
+          bool <parameter4>)
+        {
+           // Method content
+        }
+    }
+  }
+```
