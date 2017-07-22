@@ -303,3 +303,52 @@
 
 - **DO NOT** use a prefix on enumeration value names (e.g., &quot;ad&quot; for ADO enums, &quot;rtf&quot; for rich text enums, etc.).
 
+### 2.8 Names of Type Members
+#### 2.8.1 Names of Methods
+
+- **DO** give methods names that are verbs or verb phrases.
+```csharp
+  public class String
+  {
+    public int CompareTo(...){...}
+    public string[] Split(...) {...}
+    public string Trim() {...}
+  }
+```
+
+- DO suffix asynchronous method name by &quot;Async&quot;
+```csharp
+  private static async Task FooAsync()
+  {
+    await Task.Delay(1000);
+    Console.WriteLine("Done with first delay");
+    await Task.Delay(1000);
+  }
+```
+
+#### 2.8.2 Names of Property
+
+- **DO** name properties using a noun, noun phrase, or adjective.
+- **DO NOT** have properties that match the name of &quot;Get&quot; methods as in the following example:
+```csharp
+  public string Body { get;set }
+  public string GetBody() {....}
+```
+- **DO** name collection properties with a plural phrase describing the items in the collection instead of using a singular phrase followed by &quot;List&quot; or &quot;Collection&quot;.
+```csharp
+  // DO
+  public ICollection<Person> Persons { get;set; }
+  // DO NOT
+  public ICollection<Person> PersonCollection { get;set; }
+```
+
+#### 2.8.3 Names of Events
+
+- **DO** name events with a verb or a verb phrase. For example: Clicked, Painting, DroppedDown.
+- **DO** give events names with a concept of before and after, using the present and past tenses.
+- **DO NOT** use &quot;Before&quot; or &quot;After&quot; prefixes or postfixes to indicate pre- and post-events. Use present and past tenses as just described.
+
+#### 2.8.4 Names of Fields
+
+- **DO** name fields using a noun, noun phrase, or adjective.
+
