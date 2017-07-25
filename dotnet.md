@@ -387,3 +387,53 @@
     }
   }
 ```
+
+
+## 4. Methods
+
+- **DO** write methods which do one and only one job.
+- **AVOID** methods which have more than 30 lines of code.
+- Public methods must validate their input arguments. Use the prescribed Design By Contract (DBC) library to perform such validation. For example:
+```csharp
+  public ICollection<Person> SearchPersons(string firstName, string lastName)
+  {
+    // Do validate input parameter
+    if(string.IsNullOrEmpty(firstName))
+      throw new ArgumentNullException("firstName");
+    if(string.IsNullOrEmpty(lastName))
+      throw new ArgumentNullException("lastName"); 
+    
+    // Do actual method logic  
+
+  }
+```
+
+- **AVOID** writing methods accepting any more than 5 parameters. Consider use a class or struct to wrap those parameters instead.
+```csharp
+  // DO NOT
+  public ICollection<Person> SearchPerson(
+    string firstName,
+    string lastName,
+    DateTime? dateOfBirth,
+    string email,
+    bool isActive,
+    bool hasChild)
+  {
+    ...
+  }
+  // DO 
+  public ICollection<Person> SearchPerson(SearchPersonCriteria criteria)
+  {
+    ...
+  }
+```
+
+- DRY (Don&#39;t Repeat Yourself). That is NEVER allowing duplication in code. Refactor duplicated code into new methods of same or different class.
+- **DO** return empty collection instead of null.
+- To return (or receive) data as collection of objects, use interface (IEnumerable&lt;T&gt; , ICollection&lt;T&gt;, IList&lt;T&gt;, ..) instead of concrete class. Prefer using ICollection&lt;T&gt; for common case.
+```csharp
+  // DO 
+  public IList<Person> GetAllPersons() {...}
+  // DO NOT
+  public List<Person> GetAllPersons() {...}
+```
