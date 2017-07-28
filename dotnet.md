@@ -519,3 +519,64 @@
     }
   }
 ```
+
+
+### 5.2 Exception Handling
+
+- **DO NOT** declare an empty catch block.
+```csharp
+  // DO NOT 
+  try
+  {
+    ...
+  }
+  catch
+  {
+    // DO NOTHING
+  }
+```
+
+- **DO** only use the finally block to release resources from a try statement.
+```csharp
+  // DO NOT 
+  try
+  {
+    // Open database connection 
+    dbConnection.Open();
+  }
+  catch
+  {
+    dbConnection.Close();
+  }
+
+  // DO 
+  try
+  {
+    // Open database connection 
+    dbConnection.Open();
+  }
+  catch
+  {
+    // Log exception
+  }
+  finally
+  {
+    // This code block is executed for both case of success or failure.
+    // Release connection.
+    dbConnection.Close();
+  }
+```
+- **DO** catch and handle exceptions (like logging) as late in the call stack as possible, unless a lower level module can catch and do something meaningful about the exception.
+- **DO** define a global exception handling policy to intercept all exceptions not caught by low-level modules.
+- **NEVER** swallow exceptions. There should always be some indication that an exception occurred. Log trace of the exception is the bare minimum.
+- **DO** use using block as a short-hand for the try-finally pattern with IDisposable object.
+```csharp
+  // DO 
+  using (var dbConnection = new DBConnection())
+  {
+    dbConnection.Open();
+    ...
+    // Do not need to explicitly release resource.
+  }
+```
+
