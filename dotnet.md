@@ -580,3 +580,38 @@
   }
 ```
 
+### 5.3 Exceptions and Performance
+
+- **CONSIDER** the performance implications of throwing exceptions. Throw rates above 100 per second are likely to noticeably impact the performance of most applications.
+
+To improve performance, it is possible to use either the Tester-Doer Pattern or the Try-Parse Pattern as described below:
+
+#### 5.3.1 Tester-Doer Pattern
+
+- **CONSIDER** the Tester-Doer Pattern for members that might throw exceptions in common scenarios to avoid performance problems related to exceptions.
+```csharp
+  ICollection<int> numbers = ...
+  if( numbers != null && !numbers.IsReadOnly ) // Tester
+  {
+    numbers.Add(1); //Doer
+  }
+```
+
+#### 5.3.2 Try-Parse Pattern
+
+- **CONSIDER** the Try-Parse Pattern for members that might throw exceptions in common scenarios to avoid performance problems related to exceptions.
+- **DO** use the prefix &quot;Try&quot; and Boolean return type for methods implementing this pattern.
+- **DO** provide an exception-throwing member for each member using the Try-Parse Pattern.
+```csharp
+  public struct DateTime
+  {
+    public static DateTime Parse(string dateTime)
+    {
+      ...
+    }
+    public static bool TryParse(string dateTime, out DateTime result)
+    {
+      ...
+    }
+  }
+```
