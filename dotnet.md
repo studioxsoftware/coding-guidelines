@@ -437,3 +437,85 @@
   // DO NOT
   public List<Person> GetAllPersons() {...}
 ```
+## 5. Exceptions
+### 5.1 Exception Throwing
+
+- **DO** report execution failures by throwing exceptions.
+- **DO NOT** return error codes.
+```csharp
+  // DO NOT 
+  public void Execute(out int errorCode)
+  {
+    // Case 1 failed
+    errorCode = 100;
+    ...
+    // Case 2 failed 
+    errorCode = 200;
+    ...
+    // Success
+    errorCode = 0;
+  }
+  // DO 
+  public void Execute()
+  {
+    // Case 1 failed
+    throw new ABCException("Case 1 failed");
+    ...
+    // Case 2 failed 
+    throw new CDEException("Case 2 failed");
+    ...
+    // Success
+    ...
+  }
+```
+
+- **DO NOT** use exception as a flow control structure. Exceptions are for exceptional cases only.
+```csharp
+  // DO NOT 
+  public void Execute()
+  {
+    try
+    {
+      // Execute normal case 
+      ...
+      // If failed 
+      throw new ABCException();
+    }
+    catch(ABCException)
+    {
+      // Execute alternative case
+      ...
+    }
+  }
+```
+
+- **DO** throw the most specific exceptions which match the current level of abstraction. For examples:
+
+- Do not throw [SqlException](https://www.assembla.com/wiki/show/pe_gameworld/SqlException) to the GUI because that makes the GUI depends on the low-level implementation details. Throw a high-level exception like [InsufficientBalance](https://www.assembla.com/wiki/show/pe_gameworld/InsufficientBalance) instead
+- Never throw Exception. Use a more specific exception (either custom-built or built-in) instead.
+
+- **DO NOT** throw or derive from ApplicationException, use Exception instead. It was originally thought that custom exceptions should derive from the ApplicationException class; however in practice this has not been found to add significant value.
+- **DO NOT** give error messages like &quot;Error in Application&quot;, &quot;There is an error&quot; etc. Instead give specific messages like &quot;Failed to update database. Please make sure the login id and password are correct&quot;.
+- **DO** show short and friendly message to the user. But log the actual error with all possible information. This will help a lot in diagnosing problems.
+- **DO** not put critical information in the message field of exception objects.
+- **DO NOT** use throw ex, instead use throw to rethrow an exception to avoid the call stack from being erased.
+```csharp
+  public void X()
+  {
+    try
+    {
+      ...
+    }
+    catch(Exception ex)
+    {
+      // DO 
+      throw;
+
+      //DO NOT
+      throw ex;
+
+      //DO NOT 
+      throw new ABCException(ex);
+    }
+  }
+```
