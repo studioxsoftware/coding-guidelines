@@ -615,3 +615,51 @@ To improve performance, it is possible to use either the Tester-Doer Pattern or 
     }
   }
 ```
+
+
+## 6. Logging
+
+- **DO** use Logger class for logging all error, warning, and traces.
+- **DO** use the logger class extensively throughout the code to record errors, warning and even trace messages that can help you trouble shoot a problem.
+- **DO** log the actual error with all possible information (e.g. parameters, SQL statement, file data). This will help a lot in diagnosing problems.
+- **AVOID** log the critical information (e.g. credit card number, SSN).Consider encrypt critical information in log if the information logging is required.
+
+## 7. Code Comments
+
+- **DO** use // or /// but never /\* ..\*/ or &quot;flowerbox&quot; comment.
+```csharp
+  // ***********************************
+  // This is a bad code comment format
+  // ***********************************
+
+  /* This is another bad code comment format */
+  
+  // This is good code comment format
+  ///<summary>
+  /// This is event better code comment format.
+  ///<summary>
+```
+
+- **DO** add comments only when they make sense, don&#39;t add comments for the sake of having some comments. Bad and/or redundant comments are much worse than no comment at all.
+```csharp
+  // This is code presents the redundant code comment 
+  // The window.Open() is to self-describe what it does.
+  public void Execute()
+  {
+    var window = new Window();
+
+    // Open window 
+    window.Open();
+  }
+```
+
+- **DO** write comments which describe what the code does and/or whyit does that, not how the code works.
+
+- Only describe the how when there are inevitable complicated code like multithreading. On other occasions, if the code is too complicated to understand without lots of comment, chance is that the code is poorly written and should be refactored.
+
+- **DO** use English for all code comments.
+- **DO** add comments indicating what changes were made and optionally why, when checking in code into Source Control System (SCS).
+- **DO** remove unused code from the source file instead of commenting it out.
+- **DO** use // TODO: comment to indicate unfinished tasks.
+- **DO** use // HACK: comment to indicate any shortcuts taken in the implementation which need to be fixed or improved later.
+- **CONSIDER** usually walk throught //TODO comment to complete the unfinished tasks and remove it after completed.
