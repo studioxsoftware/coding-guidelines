@@ -663,3 +663,61 @@ To improve performance, it is possible to use either the Tester-Doer Pattern or 
 - **DO** use // TODO: comment to indicate unfinished tasks.
 - **DO** use // HACK: comment to indicate any shortcuts taken in the implementation which need to be fixed or improved later.
 - **CONSIDER** usually walk throught //TODO comment to complete the unfinished tasks and remove it after completed.
+
+## 8. String Manipulation
+
+- **DO** use [StringBuilder](https://www.assembla.com/wiki/show/pe_gameworld/StringBuilder) whenever multiple concatenations are required.
+
+```csharp
+  // DO 
+  var queryBuilder = new StringBuilder();
+  queryBuilder.AppendLine("SELECT * FROM dbo.Employees");
+  queryBuilder.AppendFormat("WHERE FirstName == N'{0}'", firstName);
+  ...
+  // DO NOT 
+  var query = string.Empty;
+  query = query + "SELECT * FROM dbo.Employees" + " " ;
+  query = query + "WHERE FirstName = N'" + firstName + "'";
+  ...
+
+```
+
+- **DO** use string formatting technique to parameterize strings.
+
+```csharp
+  // DO 
+  var fullName = string.Format("{0} {1}",firstName,lastName);
+
+  // DO NOT
+  var fullName = firstName + " " + lastName;
+
+```
+
+- **DO** use string.Empty instead of &quot;&quot;.
+```csharp
+  // DO 
+  var title = string.Empty;
+
+  // DO NOT 
+  var tile = "";
+```
+
+- **CONSIDER** use the &quot;@&quot; prefix for string literals instead of escaped strings.
+```csharp
+  // DO
+  @"c:\temp"
+  // DO NOT 
+  "c:\\temp"
+```
+
+- **DO** use string. [IsNullOrEmpty](https://www.assembla.com/wiki/show/pe_gameworld/IsNullOrEmpty)()/string.IsNullOrWhitespaces() to detect null or empty string/whitespace.
+- **DO** be aware of case sensitive in string comparison. This will ensure the string will match even if the string being compared has a different case.
+
+```csharp 
+  string a = ...
+  string b = ...
+  if( string.Equals(a, b, StringComparison.InvariantCultureIgnoreCase))
+  {
+    ...
+  }
+```
