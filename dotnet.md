@@ -721,3 +721,17 @@ To improve performance, it is possible to use either the Tester-Doer Pattern or 
     ...
   }
 ```
+## 9. Unit Test
+
+- Although not required, it is recommended that test code is written before production code (i.e. test-first approach). Whether test-first or test-last is applied, never delay the act of writing test code.
+- Write one or more unit test cases to reproduce any defect found by QA team.
+- Follow these principles when writing unit test code
+
+- **Automatic:** The whole testing process must be automated. Do not rely on any manual process such as data population, environment configuration etc. Test code must do all those things.
+- **Complete:** Test anything that can possibly break. When you are in doubt whether something can possibly go wrong or not, write a test.
+- **Repeatable:** All test cases must be able to run and rerun repeatedly and produce the same result every time. If it doesn&#39;t, they are not reliable and must be fixed.
+- **Independent:** Each test case must be configured and run in isolation from one another. Do not make any assumption that one test must be executed before another.
+- **Production-like:** Test code must be treated like production code and subject to strict review. That means each and every coding convention in this document is very well applicable to test code.
+- **Fast:** Test cases must run fast. If they do not, mock out the heavy dependencies (like database) to make them run fast.
+
+
