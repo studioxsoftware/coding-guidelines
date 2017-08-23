@@ -734,4 +734,101 @@ To improve performance, it is possible to use either the Tester-Doer Pattern or 
 - **Production-like:** Test code must be treated like production code and subject to strict review. That means each and every coding convention in this document is very well applicable to test code.
 - **Fast:** Test cases must run fast. If they do not, mock out the heavy dependencies (like database) to make them run fast.
 
+## 10. Miscellaneous
+
+- Use foreach-style loop instead of for loop when possible.
+
+```csharp
+  // DO
+  foreach( var person in persons)
+  {
+    ...
+  }
+
+  // DO NOT  
+  for (int index=0; index < persons.Count(); index++)
+  {
+    var person = person[0];
+    ...
+  }
+
+```
+- A switch statement must always contain a default branch which handles unexpected cases.
+
+```csharp
+  switch (accessMode)
+  {
+    case FileAccess.Read:
+      ...
+      break;
+    case FileAccess.Write: 
+      ...
+      break;
+    default:
+      throw new NotSupportedException();
+  }
+```
+
+- Never, ever, use a magic number/string.
+
+```csharp
+  // DO 
+  const int MaxCount = 300;
+  if(totalCount > MaxCount)
+  {
+    ...
+  }
+
+  // DO NOT 
+  if(totalCount > 300)
+  {
+    ...
+  }
+```
+
+- Use prescribed tools to add loggingcode throughout the application to facilitate debugging.
+- Consider using AOP to inject logging code when applicable.
+- Fix all issuesreported by static analysis tool(s). An issue can be waived with the authority of Team Lead or Technical Lead.
+- Always check Event &amp; Delegate instances for null before invoking.
+
+ ```csharp
+    public class Window
+    {
+      public EventHandler Opening { get;set; }
+      public void DoSomething()
+      {
+        ...
+        if(Opening != null)
+        {
+          Opening(this, new EventArgs());
+        }
+      }
+    }
+ ```
+
+- Do not omit access modifiers. Explicitly declare all identifiers with the appropriate access modifier instead of allowing the default.
+
+```csharp
+  // DO NOT
+  class Window
+  {
+    string title;
+    int width;
+    int height;
+  } 
+  // DO 
+  internal class Window
+  {
+    private string title;
+    private int width;
+    private int height;
+  }
+```
+
+- Do not hardcode text in UI. Use resource files.
+- Never hardcode a path or drive name in code. Get the application path programmatically and use relative path.
+- Never assume that your code will run from drive &quot;C:&quot;. You may never know, some users may run it from network or from a &quot;Z:&quot;.
+- In the application start up, do some kind of &quot;self-check&quot; and ensure all required files and dependencies are available in the expected locations. Check for database connection in start-up, if required. Give a friendly message to the user in case of any problems.
+- If a wrong value found in the configuration file, application should throw an error or give a message and also should tell the user what are the correct values.
+- Avoid having very large files. If a single file has more than 1000 lines of code, it is a good candidate for refactoring. Split them logically into two or more classes.
 
